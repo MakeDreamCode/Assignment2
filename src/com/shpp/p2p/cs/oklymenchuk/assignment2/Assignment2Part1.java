@@ -7,9 +7,9 @@ import java.util.*;
 /**
  * Solving a quadratic equation.
  */
-public class Assignment2Part1<DISCRIMINANT> extends TextProgram {
+public class Assignment2Part1 extends TextProgram {
 
-    private static Map<String, Double> coefficientsMap = new HashMap<>();
+    Map<String, Double> coefficientsMap = new HashMap<>();
 
     private static final String DISCRIMINANT = "Discriminant";
 
