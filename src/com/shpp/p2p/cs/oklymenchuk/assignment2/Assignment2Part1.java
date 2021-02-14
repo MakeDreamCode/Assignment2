@@ -18,7 +18,7 @@ public class Assignment2Part1 extends TextProgram {
      */
     public void run() {
 
-        // find the size of the enum
+        // take all constants from the Enum in an array
         Coefficient[] coefficients = Coefficient.values();
 
         // input coefficients
@@ -26,7 +26,7 @@ public class Assignment2Part1 extends TextProgram {
             coefficientsMap.put(c.toString(), inputCoefficient(c.toString()));
         }
 
-        // calculate and put the discriminant in Map
+        // calculate and add the discriminant in Map
         coefficientsMap.put(DISCRIMINANT, calculateDiscriminant(coefficientsMap));
 
         /*// for debug only
@@ -51,6 +51,12 @@ public class Assignment2Part1 extends TextProgram {
         }
     }
 
+    /**
+     * Finding the roots of a quadratic equation.
+     * The number of the required roots depends on the passed discriminant value.
+     * @param coefficientsMap - Map<String, Double> contains pairs name : value, including discriminant.
+     * @return List of founded roots.
+     */
     private List<Double> calculateRoots(Map<String, Double> coefficientsMap) {
 
         List<Double> roots = new ArrayList<>();
@@ -71,12 +77,23 @@ public class Assignment2Part1 extends TextProgram {
         return roots;
     }
 
+    /**
+     * Calculates a discriminant.
+     * @param coefficientsMap - Map<String, Double> contains pairs name : value.
+     * @return the calculated value of the discriminant.
+     */
     private double calculateDiscriminant(Map<String, Double> coefficientsMap){
         return (coefficientsMap.get("b") * coefficientsMap.get("b")) -
                 (4 * coefficientsMap.get("a") * coefficientsMap.get("c"));
     }
 
+    /**
+     * Gets a coefficient value from the console.
+     * @param coefficient - string contains the name of the coefficient.
+     * @return value coefficient in double type
+     */
     private double inputCoefficient(String coefficient){
+        // этот поток можно не закрывать, так как это System.in
         Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.print("Please enter " + coefficient + ": ");
