@@ -2,37 +2,44 @@ package com.shpp.p2p.cs.oklymenchuk.assignment2;
 
 import com.shpp.cs.a.console.TextProgram;
 
+import java.util.Scanner;
+
 /**
  * Solving a quadratic equation.
  */
 public class Assignment2Part1 extends TextProgram {
 
-    final static String SIGN_MINUS = "minus";
-    final static String SIGN_PLUS = "plus";
+    // надо решать через МАПы!!! Это ФСЁ БАБУЙНЯ!!!
+
+    private final static String SIGN_MINUS = "minus";
+    private final static String SIGN_PLUS = "plus";
+    private final static String COEFFICIENT_A = "a";
+    private final static String COEFFICIENT_B = "b";
+    private final static String COEFFICIENT_C = "c";
 
     /**
      * Main method.
      */
     public void run() {
-        // enter coefficients a, b, c.
-        print("Please enter a:");
-        int a = readInt();
-        print("Please enter b:");
-        int b = readInt();
-        print("Please enter c:");
-        int c = readInt();
 
-        System.out.println(a + " " + b + " " + c);
+        double a = inputCoefficient(COEFFICIENT_A);
+        double b = inputCoefficient(COEFFICIENT_B);
+        double c = inputCoefficient(COEFFICIENT_C);
 
+        // for debug
+        // System.out.println(a + " " + b + " " + c);
+
+        // check a == 0
         if (a == 0) {
             System.out.println("It`s not a quadratic equation");
             System.exit(-1);
         }
 
         // find the discriminant
+        double theDiscriminant = (b * b) - (4 * a * c);
 
-        int theDiscriminant = (b * b) - (4 * a * c);
-        System.out.println(theDiscriminant);
+        // for debug
+        //System.out.println("Discriminant is " + theDiscriminant);
 
         if (theDiscriminant < 0) {
             System.out.println("There are no real roots");
@@ -57,11 +64,24 @@ public class Assignment2Part1 extends TextProgram {
      * @param sign
      * @return
      */
-    private int theRoot(int discriminant, int a, int b, String sign) {
+    private double theRoot(double discriminant, double a, double b, String sign) {
         if (sign.equals(SIGN_MINUS)) {
-            return (int) (-b - Math.sqrt(discriminant)) / 2 * a;
+            return (-b - Math.sqrt(discriminant)) / (2 * a);
         } else {
-            return (int) (-b + Math.sqrt(discriminant)) / 2 * a;
+            return (-b + Math.sqrt(discriminant)) / (2 * a);
+        }
+    }
+
+    private double inputCoefficient(String coefficient){
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            System.out.print("Please enter " + coefficient + ": ");
+            if(scanner.hasNextDouble()){
+                return scanner.nextDouble();
+            } else {
+                System.out.println("Invalid format! Please, input the coefficient again!");
+                scanner.nextLine();
+            }
         }
     }
 }
