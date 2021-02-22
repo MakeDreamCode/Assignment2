@@ -5,7 +5,7 @@ import com.shpp.cs.a.console.TextProgram;
 import java.util.*;
 
 /**
- * Solving a quadratic equation.
+ * Solving a quadratic equation. Версия для Алексея.
  */
 public class Assignment2Part1 extends TextProgram {
 
