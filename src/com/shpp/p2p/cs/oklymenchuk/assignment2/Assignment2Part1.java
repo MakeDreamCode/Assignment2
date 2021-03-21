@@ -5,49 +5,50 @@ import com.shpp.cs.a.console.TextProgram;
 import java.util.*;
 
 /**
- * Solving a quadratic equation. Версия для Алексея.
+ * Task 1. Solving a quadratic equation.
  */
 public class Assignment2Part1 extends TextProgram {
 
     Map<String, Double> coefficientsMap = new HashMap<>();
 
     private static final String DISCRIMINANT = "Discriminant";
+    private static final String A = "A";
+    private static final String B = "B";
+    private static final String C = "C";
+
+    private static final String MSG_NO_ROOTS = "There are no real roots";
+    private static final String MSG_HAS_ONE_ROOT = "There is one root: ";
+    private static final String MSG_HAS_TWO_ROOTS = "There are two roots: ";
+    private static final String MSG_AND = " and ";
+    private static final String MSG_INPUT_PROMPT = "Please enter ";
+    private static final String MSG_COLON = ": ";
+    private static final String MSG_ERROR_INVALID_FORMAT = "Invalid format! Please, input the coefficient again!";
 
     /**
      * Main method.
      */
     public void run() {
 
-        // take all constants from the Enum in an array
-        Coefficient[] coefficients = Coefficient.values();
+        Coefficient[] coefficients = Coefficient.values();                          // take all constants from the Enum in an array
 
-        // input coefficients
         for (Coefficient c: coefficients) {
-            coefficientsMap.put(c.toString(), inputCoefficient(c.toString()));
+            coefficientsMap.put(c.toString(), inputCoefficient(c.toString()));      // input coefficients
         }
 
-        // calculate and add the discriminant in Map
-        coefficientsMap.put(DISCRIMINANT, calculateDiscriminant(coefficientsMap));
+        coefficientsMap.put(DISCRIMINANT, calculateDiscriminant(coefficientsMap));  // calculate and add the discriminant in Map
 
-        /*// for debug only
-        for (Map.Entry<String, Double> entry : coefficientsMap.entrySet()) {
-            System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
-        }*/
+        List<Double> foundRoots = calculateRoots(coefficientsMap);                  // find all roots
 
-        // find all roots
-        List<Double> foundRoots = calculateRoots(coefficientsMap);
-
-        // show result
         if (foundRoots.isEmpty()) {
-            System.out.println("There are no real roots");
+            System.out.println(MSG_NO_ROOTS);                                       // show result
         }
 
         if (foundRoots.size() == 1) {
-            System.out.println("There is one root: " + foundRoots.get(0));
+            System.out.println(MSG_HAS_ONE_ROOT + foundRoots.get(0));               // show result with one root
         }
 
         if (foundRoots.size() == 2) {
-            System.out.println("There are two roots: " + foundRoots.get(0) + " and " + foundRoots.get(1));
+            System.out.println(MSG_HAS_TWO_ROOTS + foundRoots.get(0) + MSG_AND + foundRoots.get(1)); // show result with two root
         }
     }
 
@@ -62,16 +63,14 @@ public class Assignment2Part1 extends TextProgram {
         List<Double> roots = new ArrayList<>();
 
         if (coefficientsMap.get(DISCRIMINANT) > 0){
-
-            roots.add((-1 * coefficientsMap.get("b") + Math.sqrt(coefficientsMap.get(DISCRIMINANT))) /
-                    (2 * coefficientsMap.get("a")));
-
-            roots.add((-1 * coefficientsMap.get("b") - Math.sqrt(coefficientsMap.get(DISCRIMINANT))) /
-                    (2 * coefficientsMap.get("a")));
+            roots.add((-1 * coefficientsMap.get(B) + Math.sqrt(coefficientsMap.get(DISCRIMINANT))) /
+                    (2 * coefficientsMap.get(A)));
+            roots.add((-1 * coefficientsMap.get(B) - Math.sqrt(coefficientsMap.get(DISCRIMINANT))) /
+                    (2 * coefficientsMap.get(A)));
         }
 
         if (coefficientsMap.get(DISCRIMINANT) == 0){
-            roots.add(- coefficientsMap.get("b") / (2 * coefficientsMap.get("a")));
+            roots.add(-1 * coefficientsMap.get(B) / (2 * coefficientsMap.get(A)));
         }
 
         return roots;
@@ -83,8 +82,8 @@ public class Assignment2Part1 extends TextProgram {
      * @return the calculated value of the discriminant.
      */
     private double calculateDiscriminant(Map<String, Double> coefficientsMap){
-        return (coefficientsMap.get("b") * coefficientsMap.get("b")) -
-                (4 * coefficientsMap.get("a") * coefficientsMap.get("c"));
+        return (coefficientsMap.get(B) * coefficientsMap.get(B)) -
+                (4 * coefficientsMap.get(A) * coefficientsMap.get(C));
     }
 
     /**
@@ -93,14 +92,17 @@ public class Assignment2Part1 extends TextProgram {
      * @return value coefficient in double type
      */
     private double inputCoefficient(String coefficient){
-        // этот поток можно не закрывать, так как это System.in
-        Scanner scanner = new Scanner(System.in);
-        while (true){
-            System.out.print("Please enter " + coefficient + ": ");
+
+        Scanner scanner = new Scanner(System.in);                                   // this stream can be left open (System.in)
+
+        while (true){                                                               // loop until input valid value
+
+            System.out.print(MSG_INPUT_PROMPT + coefficient + MSG_COLON);           // input prompt message
+
             if(scanner.hasNextDouble()){
-                return scanner.nextDouble();
+                return scanner.nextDouble();                                        // exit the loop if the correct value was entered
             } else {
-                System.out.println("Invalid format! Please, input the coefficient again!");
+                System.out.println(MSG_ERROR_INVALID_FORMAT);                       // show error message and go to the next loop
                 scanner.nextLine();
             }
         }
@@ -108,5 +110,5 @@ public class Assignment2Part1 extends TextProgram {
 }
 
 enum Coefficient{
-    a, b, c
+    A, B, C
 }
