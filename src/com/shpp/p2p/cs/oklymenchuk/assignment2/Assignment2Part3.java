@@ -6,15 +6,9 @@ import com.shpp.cs.a.graphics.WindowProgram;
 import java.awt.*;
 
 public class Assignment2Part3 extends WindowProgram {
-	/* TODO: Replace these file comments with a description of what your program
-	 * does.
-	 */
 
 	/* Constants controlling the relative positions of the
 	 * three toes to the upper-left corner of the pawprint.
-	 *
-	 * (Yes, I know that actual pawprints have four toes.
-	 * Just pretend it's a cartoon animal. ^_^)
 	 */
 	private static final double FIRST_TOE_OFFSET_X = 0;
 	private static final double FIRST_TOE_OFFSET_Y = 20;
