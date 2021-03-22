@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class Assignment2Part1 extends TextProgram {
 
-    Map<String, Double> coefficientsMap = new HashMap<>();
+    Map<String, Double> coefficientsMap = new HashMap<>();      // map for store coefficients and a discriminant
 
     private static final String DISCRIMINANT = "Discriminant";
     private static final String A = "A";
@@ -29,7 +29,7 @@ public class Assignment2Part1 extends TextProgram {
      */
     public void run() {
 
-        Coefficient[] coefficients = Coefficient.values();                          // take all constants from the Enum in an array
+        Coefficient[] coefficients = Coefficient.values();                          // take all names of constants from the Enum in an array
 
         for (Coefficient c: coefficients) {
             coefficientsMap.put(c.toString(), inputCoefficient(c.toString()));      // input coefficients
