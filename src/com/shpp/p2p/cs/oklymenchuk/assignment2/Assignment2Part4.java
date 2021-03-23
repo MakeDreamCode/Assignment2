@@ -98,7 +98,7 @@ public class Assignment2Part4 extends WindowProgram {
 		GLabel signature = new GLabel(MESSAGE_FLAG_OF + nameCountry);
 		signature.setFont(LABEL_FONT);
 		double x = (getWidth() - signature.getWidth()) - LABEL_OFFSET_RIGHT_BORDER;        // offset from the right border
-		double y = signature.getDescent() > LABEL_OFFSET_BOTTOM_BORDER ? getHeight() - LABEL_OFFSET_BOTTOM_BORDER :
+		double y = signature.getDescent() > LABEL_OFFSET_BOTTOM_BORDER ? getHeight() - signature.getDescent() :
 				getHeight() - LABEL_OFFSET_BOTTOM_BORDER;    // offset 10 pxs from the bottom border
 		add(signature, x, y);
 	}
