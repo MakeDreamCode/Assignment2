@@ -24,24 +24,24 @@ public class Assignment2Part5 extends WindowProgram {
 	public static final int WIDTH = 350;
 
 	/* FRAME*/
-	private static final double WINDOW_SHOWS_BOXES_WIDTH = NUM_COLS * (BOX_SIZE + BOX_SPACING) - BOX_SPACING;
-	private static final double WINDOW_SHOWS_BOXES_HEIGHT = NUM_ROWS * (BOX_SIZE + BOX_SPACING) - BOX_SPACING;
+	private static final double FRAME_WIDTH = NUM_COLS * (BOX_SIZE + BOX_SPACING) - BOX_SPACING;
+	private static final double FRAME_HEIGHT = NUM_ROWS * (BOX_SIZE + BOX_SPACING) - BOX_SPACING;
 
 	/* Start position of Frame*/
-	private static final double WINDOW_SHOWS_BOXES_OFFSET_X = (WIDTH - WINDOW_SHOWS_BOXES_WIDTH) / 2;
-	private static final double WINDOW_SHOWS_BOXES_OFFSET_Y = (HEIGHT - WINDOW_SHOWS_BOXES_HEIGHT) / 2;
+	private static final double FRAME_OFFSET_X = (WIDTH - FRAME_WIDTH) / 2;
+	private static final double FRAME_OFFSET_Y = (HEIGHT - FRAME_HEIGHT) / 2;
 
 	public void run(){
 
-		double offsetX = WINDOW_SHOWS_BOXES_OFFSET_X;
-		double offsetY = WINDOW_SHOWS_BOXES_OFFSET_Y;
+		double offsetX = FRAME_OFFSET_X;
+		double offsetY = FRAME_OFFSET_Y;
 
 		for (int i = 0; i < NUM_ROWS ; i++) {
 			for (int j = 0; j < NUM_COLS; j++) {
 				drawBox(offsetX, offsetY);
 				offsetX = offsetX + BOX_SIZE + BOX_SPACING;
 			}
-			offsetX = WINDOW_SHOWS_BOXES_OFFSET_X;
+			offsetX = FRAME_OFFSET_X;
 			offsetY = offsetY + BOX_SIZE + BOX_SPACING;
 		}
 	}
