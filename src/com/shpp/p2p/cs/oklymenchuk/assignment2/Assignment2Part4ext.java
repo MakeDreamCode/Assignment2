@@ -9,7 +9,7 @@ import java.awt.*;
 /**
  * Task 4. Tricolor flags.
  */
-public class Assignment2Part4Ext extends WindowProgram {
+public class Assignment2Part4ext extends WindowProgram {
 
 	public static final int APPLICATION_HEIGHT = 300 + 23; //bugfix for win (23 pixels for the topbar)
 	public static final int APPLICATION_WIDTH = 450;

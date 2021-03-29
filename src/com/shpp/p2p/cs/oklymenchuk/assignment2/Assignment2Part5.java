@@ -39,7 +39,7 @@ public class Assignment2Part5 extends WindowProgram {
 
 		for (int i = 0; i < NUM_ROWS; i++) {
 			for (int j = 0; j < NUM_COLS; j++) {
-				/* draw boxes at the row*/
+				/* draw boxes at the row */
 				drawBox(offsetX, offsetY);
 				offsetX = offsetX + ITERABLE;
 			}
