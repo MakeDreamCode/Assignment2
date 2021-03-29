@@ -33,17 +33,17 @@ public class Assignment2Part5 extends WindowProgram {
 	 * Main method.
 	 */
 	public void run() {
-		/* Initialize firsts coordinates */
+		/* initialize firsts coordinates */
 		double offsetX = FRAME_OFFSET_X;
 		double offsetY = FRAME_OFFSET_Y;
 
 		for (int i = 0; i < NUM_ROWS; i++) {
 			for (int j = 0; j < NUM_COLS; j++) {
-				/* draw boxes at the row */
+				/* draws boxes at the row */
 				drawBox(offsetX, offsetY);
 				offsetX = offsetX + ITERABLE;
 			}
-			/* drop the offsetX to the start position + iterate offsetY */
+			/* drops the offsetX to the start position + iterate offsetY */
 			offsetX = FRAME_OFFSET_X;
 			offsetY = offsetY + ITERABLE;
 		}

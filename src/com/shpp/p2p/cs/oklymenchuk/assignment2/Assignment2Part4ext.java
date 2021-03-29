@@ -7,17 +7,17 @@ import com.shpp.cs.a.graphics.WindowProgram;
 import java.awt.*;
 
 /**
- * Task 4. Tricolor flags.
+ * Task 4. Tricolor flags. Draws vertical + horizontal flags.
  */
 public class Assignment2Part4ext extends WindowProgram {
 
 	public static final int APPLICATION_HEIGHT = 300 + 23; //bugfix for win (23 pixels for the topbar)
 	public static final int APPLICATION_WIDTH = 450;
-	/* for readable code only*/
+	/* for readable code only */
 	public static final int HEIGHT = APPLICATION_HEIGHT - 23;
 
 	/* FRAME */
-	/* x, y position for the FRAME*/
+	/* x, y position for the FRAME */
 	private static final int FRAME_OFFSET_X = APPLICATION_WIDTH / 6;
 	private static final int FRAME_OFFSET_Y = HEIGHT / (2 * 5);
 	/* FRAME WIDTH & HEIGHT */
@@ -57,20 +57,20 @@ public class Assignment2Part4ext extends WindowProgram {
 	 */
 	private void drawFlag(CountryFlag flag) {
 
-		/* If the flag is vertical. */
+		/* if the flag is vertical */
 		if (flag.isVertical) {
 			/* calculates the X - start position + the segment`s length */
 			int offsetX = FRAME_OFFSET_X;
 			/* how many segments will be show (equals color number) */
 			int segmentLength = FRAME_WIDTH / flag.flagColors.length;
 
-			/* fills FRAME with vertical segments */
+			/* fills the FRAME with vertical segments */
 			for (int i = 0; i < flag.flagColors.length; i++) {
 				drawVerticalSegment(offsetX, segmentLength, flag.flagColors[i]);
 				/* calculates the next X (start position of the segment) */
 				offsetX = offsetX + segmentLength;
 			}
-		/* If the flag is horizontal. */
+		/* if the flag is horizontal */
 		} else {
 			/* calculates the Y - start position + the segment`s length */
 			int offsetY = FRAME_OFFSET_Y;
@@ -84,12 +84,12 @@ public class Assignment2Part4ext extends WindowProgram {
 			}
 		}
 
-		/* Draw a country name signature */
+		/* draws a country name signature */
 		drawSignature(flag.countryName);
 	}
 
 	/**
-	 * Draw a vertical segment of the flag.
+	 * Draws a vertical segment of the flag.
 	 * @param offsetX - start x-position of the vertical segment;
 	 * @param segmentLength - length of the vertical segment;
 	 * @param flagColor 	- array of Color objects.
@@ -103,7 +103,7 @@ public class Assignment2Part4ext extends WindowProgram {
 	}
 
 	/**
-	 * Draw a horizontal segment of the flag.
+	 * Draws a horizontal segment of the flag.
 	 * @param offsetY start y-position of the horizontal segment;
 	 * @param segmentLength - length of the horizontal segment;
 	 * @param flagColor 	- array of Color objects.

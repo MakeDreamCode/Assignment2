@@ -58,7 +58,7 @@ public class Assignment2Part3 extends WindowProgram {
 	}
 
 	/**
-	 * Draw a heel of a paw.
+	 * Draws a heel of a paw.
 	 * @param x - The x coordinate of the upper-left corner of the bounding box for the heel.
 	 * @param y - The y coordinate of the upper-left corner of the bounding box for the heel.
 	 */
@@ -70,7 +70,7 @@ public class Assignment2Part3 extends WindowProgram {
 	}
 
 	/**
-	 * Draw a toe of paw.
+	 * Draws a toe of paw.
 	 * @param x - The x coordinate of the upper-left corner of the bounding box for the toe.
 	 * @param y - The y coordinate of the upper-left corner of the bounding box for the toe.
 	 */

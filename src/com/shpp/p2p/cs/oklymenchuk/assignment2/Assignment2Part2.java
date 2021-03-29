@@ -48,7 +48,7 @@ public class Assignment2Part2 extends WindowProgram {
 	}
 
 	/**
-	 * Method draws a circle. A circle is inscribed in a square.
+	 * Draws a circle. The circle is inscribed in a square.
 	 * @param x - the x-coordinate of the upper left point of the square;
 	 * @param y - the y-coordinate of the upper left point of the square;
 	 * @param circle_diameter - diameter of the circle.

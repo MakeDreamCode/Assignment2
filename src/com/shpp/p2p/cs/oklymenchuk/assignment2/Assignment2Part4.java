@@ -13,11 +13,11 @@ public class Assignment2Part4 extends WindowProgram {
 
 	public static final int APPLICATION_HEIGHT = 300 + 23; //bugfix for win (23 pixels for the topbar)
 	public static final int APPLICATION_WIDTH = 450;
-	/* for readable code only*/
+	/* for readable code only */
 	public static final int HEIGHT = APPLICATION_HEIGHT - 23;
 
 	/* FRAME */
-	/* x, y position for the FRAME*/
+	/* x, y position for the FRAME */
 	private static final int FRAME_OFFSET_X = APPLICATION_WIDTH / 6;
 	private static final int FRAME_OFFSET_Y = HEIGHT / (2 * 5);
 	/* FRAME WIDTH & HEIGHT */
@@ -50,13 +50,13 @@ public class Assignment2Part4 extends WindowProgram {
 		/* how many segments will be show (equals color number) */
 		int segmentLength = FRAME_WIDTH / flag.flagColors.length;
 
-		/* fills FRAME with vertical segments */
+		/* fills the FRAME with vertical segments */
 		for (int i = 0; i < flag.flagColors.length; i++) {
 			drawVerticalSegment(offsetX, segmentLength, flag.flagColors[i]);
 			/* calculates the next X (start position of the segment) */
 			offsetX = offsetX + segmentLength;
 		}
-		/* Draw a country name signature */
+		/* draws a country name signature */
 		drawSignature(flag.countryName);
 	}
 
