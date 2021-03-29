@@ -5,17 +5,23 @@ import com.shpp.cs.a.console.TextProgram;
 import java.util.*;
 
 /**
+ * To easily supplement the equation with new coefficients.
+ * How many coefficients to add, so much will be read from the keyboard.
+ */
+enum Coefficient{
+    A, B, C
+}
+
+/**
  * Task 1. Solving a quadratic equation.
  */
 public class Assignment2Part1 extends TextProgram {
-
-    Map<String, Double> coefficientsMap = new HashMap<>();      // map for store coefficients and a discriminant
-
+    /* Define constants for coefficients */
     private static final String DISCRIMINANT = "Discriminant";
     private static final String A = "A";
     private static final String B = "B";
     private static final String C = "C";
-
+    /* Define constants for messages */
     private static final String MSG_NO_ROOTS = "There are no real roots";
     private static final String MSG_HAS_ONE_ROOT = "There is one root: ";
     private static final String MSG_HAS_TWO_ROOTS = "There are two roots: ";
@@ -23,6 +29,8 @@ public class Assignment2Part1 extends TextProgram {
     private static final String MSG_INPUT_PROMPT = "Please enter ";
     private static final String MSG_COLON = ": ";
     private static final String MSG_ERROR_INVALID_FORMAT = "Invalid format! Please, input the coefficient again!";
+    /* map for store coefficients and a discriminant */
+    Map<String, Double> coefficientsMap = new HashMap<>();
 
     /**
      * Main method.
@@ -37,19 +45,7 @@ public class Assignment2Part1 extends TextProgram {
 
         coefficientsMap.put(DISCRIMINANT, calculateDiscriminant(coefficientsMap));  // calculate and add the discriminant in Map
 
-        List<Double> foundRoots = calculateRoots(coefficientsMap);                  // find all roots
-
-        if (foundRoots.isEmpty()) {
-            System.out.println(MSG_NO_ROOTS);                                       // show result
-        }
-
-        if (foundRoots.size() == 1) {
-            System.out.println(MSG_HAS_ONE_ROOT + foundRoots.get(0));               // show result with one root
-        }
-
-        if (foundRoots.size() == 2) {
-            System.out.println(MSG_HAS_TWO_ROOTS + foundRoots.get(0) + MSG_AND + foundRoots.get(1)); // show result with two root
-        }
+        showResult(calculateRoots(coefficientsMap));                                // find all roots and show result
     }
 
     /**
@@ -107,8 +103,22 @@ public class Assignment2Part1 extends TextProgram {
             }
         }
     }
-}
 
-enum Coefficient{
-    A, B, C
+    /**
+     * Prints roots.
+     * @param foundRoots - list of roots.
+     */
+    private void showResult(List<Double> foundRoots){
+        if (foundRoots.isEmpty()) {
+            System.out.println(MSG_NO_ROOTS);                                       // no roots
+        }
+
+        if (foundRoots.size() == 1) {
+            System.out.println(MSG_HAS_ONE_ROOT + foundRoots.get(0));               // one root
+        }
+
+        if (foundRoots.size() == 2) {
+            System.out.println(MSG_HAS_TWO_ROOTS + foundRoots.get(0) + MSG_AND + foundRoots.get(1)); // two root
+        }
+    }
 }
