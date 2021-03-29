@@ -1,0 +1,148 @@
+package com.shpp.p2p.cs.oklymenchuk.assignment2;
+
+import acm.graphics.GLabel;
+import acm.graphics.GRect;
+import com.shpp.cs.a.graphics.WindowProgram;
+
+import java.awt.*;
+
+/**
+ * Task 4. Tricolor flags.
+ */
+public class Assignment2Part4Ext extends WindowProgram {
+
+	public static final int APPLICATION_HEIGHT = 300 + 23; //bugfix for win (23 pixels for the topbar)
+	public static final int APPLICATION_WIDTH = 450;
+	/* for readable code only*/
+	public static final int HEIGHT = APPLICATION_HEIGHT - 23;
+
+	/* FRAME */
+	/* x, y position for the FRAME*/
+	private static final int FRAME_OFFSET_X = APPLICATION_WIDTH / 6;
+	private static final int FRAME_OFFSET_Y = HEIGHT / (2 * 5);
+	/* FRAME WIDTH & HEIGHT */
+	private static final int FRAME_WIDTH = APPLICATION_WIDTH * 4 / 6;
+	private static final int FRAME_HEIGHT = HEIGHT * 4 / 5;
+	/* Label properties */
+	private static final String MESSAGE_FLAG_OF = "Flag of ";
+	private static final String LABEL_FONT = "SansSerif-bold-16";
+	private static final int LABEL_OFFSET_RIGHT_BORDER = 10;
+	private static final int LABEL_OFFSET_BOTTOM_BORDER = 10;
+
+	/**
+	 * Main method.
+	 */
+	public void run() {
+		/* Flag of Belgium, 3 colors, vertical */
+		CountryFlag flagBelgium = new CountryFlag("Belgium",
+				new Color[]{Color.BLACK, Color.YELLOW, Color.RED},
+				true);
+		/* Flag of Spectral Republic, 7 colors, horizontal */
+		CountryFlag flagSpectre = new CountryFlag("Spectral Republic",
+				new Color[]{Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA},
+				true);
+		/* Flag of Ukraine, 2 colors, horizontal */
+		CountryFlag flagUkraine = new CountryFlag("Ukraine",
+				new Color[]{Color.BLUE, Color.YELLOW},
+				false);
+
+//		drawFlag(flagBelgium);
+//		drawFlag(flagSpectre); // uncomment and try it :)
+		drawFlag(flagUkraine); // uncomment and try it :)
+	}
+
+	/**
+	 * Draws a flag.
+	 * @param flag - - class CountryFlag.
+	 */
+	private void drawFlag(CountryFlag flag) {
+
+		/* If the flag is vertical. */
+		if (flag.isVertical) {
+			/* calculates the X - start position + the segment`s length */
+			int offsetX = FRAME_OFFSET_X;
+			/* how many segments will be show (equals color number) */
+			int segmentLength = FRAME_WIDTH / flag.flagColors.length;
+
+			/* fills FRAME with vertical segments */
+			for (int i = 0; i < flag.flagColors.length; i++) {
+				drawVerticalSegment(offsetX, segmentLength, flag.flagColors[i]);
+				/* calculates the next X (start position of the segment) */
+				offsetX = offsetX + segmentLength;
+			}
+		/* If the flag is horizontal. */
+		} else {
+			/* calculates the Y - start position + the segment`s length */
+			int offsetY = FRAME_OFFSET_Y;
+			/* how many segments will be show (equals color number) */
+			int segmentLength = FRAME_HEIGHT / flag.flagColors.length;
+			/* fills FRAME  with horizontal segments */
+			for (int i = 0; i < flag.flagColors.length; i++) {
+				drawHorizontalSegment(offsetY, segmentLength, flag.flagColors[i]);
+				/* calculates the next Y (start position of the segment) */
+				offsetY = offsetY + segmentLength;
+			}
+		}
+
+		/* Draw a country name signature */
+		drawSignature(flag.countryName);
+	}
+
+	/**
+	 * Draw a vertical segment of the flag.
+	 * @param offsetX - start x-position of the vertical segment;
+	 * @param segmentLength - length of the vertical segment;
+	 * @param flagColor 	- array of Color objects.
+	 */
+	private void drawVerticalSegment(int offsetX, int segmentLength, Color flagColor) {
+		GRect verticalSegment = new GRect(offsetX, FRAME_OFFSET_Y,
+				segmentLength, FRAME_HEIGHT);
+		verticalSegment.setColor(flagColor);
+		verticalSegment.setFilled(true);
+		add(verticalSegment);
+	}
+
+	/**
+	 * Draw a horizontal segment of the flag.
+	 * @param offsetY start y-position of the horizontal segment;
+	 * @param segmentLength - length of the horizontal segment;
+	 * @param flagColor 	- array of Color objects.
+	 */
+	private void drawHorizontalSegment(int offsetY, int segmentLength, Color flagColor) {
+		GRect segmentOfFlag = new GRect(FRAME_OFFSET_X, offsetY,
+				FRAME_WIDTH, segmentLength);
+		segmentOfFlag.setColor(flagColor);
+		segmentOfFlag.setFilled(true);
+		add(segmentOfFlag);
+	}
+
+	/**
+	 * Draws a signature.
+	 * @param nameCountry - string from CountryFlag class.
+	 */
+	private void drawSignature(String nameCountry) {
+		GLabel signature = new GLabel(MESSAGE_FLAG_OF + nameCountry);
+		signature.setFont(LABEL_FONT);
+		/* calculates offset from the right border */
+		double x = (getWidth() - signature.getWidth()) - LABEL_OFFSET_RIGHT_BORDER;
+		/* calculates offset from the bottom border */
+		double y = signature.getDescent() > LABEL_OFFSET_BOTTOM_BORDER ? getHeight() - signature.getDescent() :
+				getHeight() - LABEL_OFFSET_BOTTOM_BORDER;
+		add(signature, x, y);
+	}
+
+	/**
+	 * Class CountryFlag.
+	 */
+	static class CountryFlag {
+		String countryName;
+		Color[] flagColors;
+		boolean isVertical;
+
+		public CountryFlag(String countryName, Color[] flagColors, boolean isVertical) {
+			this.countryName = countryName;
+			this.flagColors = flagColors;
+			this.isVertical = isVertical;
+		}
+	}
+}

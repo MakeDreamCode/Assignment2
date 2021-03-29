@@ -42,7 +42,6 @@ public class Assignment2Part4 extends WindowProgram {
 
 	/**
 	 * Draws a flag.
-	 *
 	 * @param flag - class CountryFlag.
 	 */
 	private void drawFlag(CountryFlag flag) {
@@ -62,8 +61,7 @@ public class Assignment2Part4 extends WindowProgram {
 	}
 
 	/**
-	 * Draw a segment fo flag.
-	 *
+	 * Draws a segment of the flag.
 	 * @param offsetX       - start x-position of the vertical segment;
 	 * @param segmentLength - length of the vertical segment;
 	 * @param flagColor     - array of Color objects.
@@ -78,7 +76,6 @@ public class Assignment2Part4 extends WindowProgram {
 
 	/**
 	 * Draws a signature.
-	 *
 	 * @param nameCountry - string from CountryFlag class.
 	 */
 	private void drawSignature(String nameCountry) {
