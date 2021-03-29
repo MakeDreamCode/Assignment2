@@ -5,6 +5,9 @@ import com.shpp.cs.a.graphics.WindowProgram;
 
 import java.awt.*;
 
+/**
+ * Task 5. Next optical illusion.
+ */
 public class Assignment2Part5 extends WindowProgram {
 	/* Bugfix for Window (toolbar uses 23 pixels) */
 	public static final int APPLICATION_HEIGHT = 350 + 23;
